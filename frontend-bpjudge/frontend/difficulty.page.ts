@@ -1,7 +1,7 @@
 import { $, _, addPage, NamedPage, UserSelectAutoComplete } from '@hydrooj/ui-default'
 
 const DIFFICULTY_TEXTS = [
-    "入门", "普及-", "普及/提高-", "普及+/提高", "提高+/省选-", "省选/NOI-", "NOI/NOI+", "暂无评定"
+    "入门", "普及-", "普及", "普及+/提高-", "提高", "提高+/省选-", "省选/NOI-", "NOI/NOI+/CTS", "暂无评定"
 ];
 
 addPage(new NamedPage(['problem_main', 'training_detail'], async () => {
@@ -25,15 +25,17 @@ addPage(new NamedPage(['problem_main', 'training_detail'], async () => {
             } else if (text == 2) {
                 $(d).html('<span style="color: rgb(243, 156, 17); font-weight: bold;">普及-</span>');
             } else if (text == 3) {
-                $(d).html('<span style="color: rgb(255, 193, 22); font-weight: bold;">普及/提高-</span>');
+                $(d).html('<span style="color: rgb(255, 193, 22); font-weight: bold;">普及</span>');
             } else if (text == 4) {
-                $(d).html('<span style="color: rgb(82, 196, 26); font-weight: bold;">普及+/提高</span>');
+                $(d).html('<span style="color: rgb(82, 196, 26); font-weight: bold;">普及+/提高-</span>');
             } else if (text == 5) {
-                $(d).html('<span style="color: rgb(52, 152, 219); font-weight: bold;">提高+/省选-</span>');
+                $(d).html('<span style="color: rgb(19, 194, 194); font-weight: bold;">提高</span>');
             } else if (text == 6) {
-                $(d).html('<span style="color: rgb(157, 61, 207); font-weight: bold;">省选/NOI-</span>');
+                $(d).html('<span style="color: rgb(52, 152, 219); font-weight: bold;">提高+/省选-</span>');
             } else if (text == 7) {
-                $(d).html('<span style="color: rgb(14, 29, 105); font-weight: bold;">NOI/NOI+</span>');
+                $(d).html('<span style="color: rgb(157, 61, 207); font-weight: bold;">省选/NOI-</span>');
+            } else if (text == 8) {
+                $(d).html('<span style="color: rgb(14, 29, 105); font-weight: bold;">NOI/NOI+/CTS</span>');
             } else {
                 $(d).html('<span style="color: rgb(191, 191, 191); font-weight: bold;">暂无评定</span>');
             }
@@ -66,15 +68,17 @@ addPage(new NamedPage(['problem_detail'], async () => {
                 } else if (text == 2) {
                     $(d).html('<span style="color: rgb(243, 156, 17); font-weight: bold;">普及-</span>');
                 } else if (text == 3) {
-                    $(d).html('<span style="color: rgb(255, 193, 22); font-weight: bold;">普及/提高-</span>');
+                    $(d).html('<span style="color: rgb(255, 193, 22); font-weight: bold;">普及</span>');
                 } else if (text == 4) {
-                    $(d).html('<span style="color: rgb(82, 196, 26); font-weight: bold;">普及+/提高</span>');
+                    $(d).html('<span style="color: rgb(82, 196, 26); font-weight: bold;">普及+/提高-</span>');
                 } else if (text == 5) {
-                    $(d).html('<span style="color: rgb(52, 152, 219); font-weight: bold;">提高+/省选-</span>');
+                    $(d).html('<span style="color: rgb(19, 194, 194); font-weight: bold;">提高</span>');
                 } else if (text == 6) {
-                    $(d).html('<span style="color: rgb(157, 61, 207); font-weight: bold;">省选/NOI-</span>');
+                    $(d).html('<span style="color: rgb(52, 152, 219); font-weight: bold;">提高+/省选-</span>');
                 } else if (text == 7) {
-                    $(d).html('<span style="color: rgb(14, 29, 105); font-weight: bold;">NOI/NOI+</span>');
+                    $(d).html('<span style="color: rgb(157, 61, 207); font-weight: bold;">省选/NOI-</span>');
+                } else if (text == 8) {
+                    $(d).html('<span style="color: rgb(14, 29, 105); font-weight: bold;">NOI/NOI+/CTS</span>');
                 } else {
                     $(d).html('<span style="color: rgb(191, 191, 191); font-weight: bold;">暂无评定</span>');
                 }
@@ -99,12 +103,13 @@ addPage(new NamedPage(['problem_edit', 'problem_create'], async () => {
             const difficultyOptions = [
                 { value: 1, text: '入门', color: 'rgb(254, 76, 97)' },
                 { value: 2, text: '普及-', color: 'rgb(243, 156, 17)' },
-                { value: 3, text: '普及/提高-', color: 'rgb(255, 193, 22)' },
-                { value: 4, text: '普及+/提高', color: 'rgb(82, 196, 26)' },
-                { value: 5, text: '提高+/省选-', color: 'rgb(52, 152, 219)' },
-                { value: 6, text: '省选/NOI-', color: 'rgb(157, 61, 207)' },
-                { value: 7, text: 'NOI/NOI+', color: 'rgb(14, 29, 105)' },
-                { value: 8, text: '暂无评定', color: 'rgb(191, 191, 191)' }
+                { value: 3, text: '普及', color: 'rgb(255, 193, 22)' },
+                { value: 4, text: '普及+/提高-', color: 'rgb(82, 196, 26)' },
+                { value: 5, text: '提高', color: 'rgb(19, 194, 194)' },
+                { value: 6, text: '提高+/省选-', color: 'rgb(52, 152, 219)' },
+                { value: 7, text: '省选/NOI-', color: 'rgb(157, 61, 207)' },
+                { value: 8, text: 'NOI/NOI+/CTS', color: 'rgb(14, 29, 105)' },
+                { value: 9, text: '暂无评定', color: 'rgb(191, 191, 191)' }
             ];
             difficultyOptions.forEach(option => {
                 const opt = document.createElement('option');
